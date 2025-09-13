@@ -1,0 +1,25 @@
+FUNCTION prevent_duplicate_notes
+
+  // Data structure to store the notes already entered
+  SET entered_notes = NEW SET
+
+  // Loop to accept up to 3 unique notes
+  WHILE SIZE(entered_notes) < 3
+
+    // Prompt the user to enter a note
+    STRING new_note = GET_USER_INPUT("Enter your note:")
+
+    // Use an if condition to check for duplicates
+    IF new_note IS IN entered_notes
+      DISPLAY "Error: This note already exists. Please enter a new one."
+    ELSE
+      // If not a duplicate, add it to the set
+      ADD new_note TO entered_notes
+      DISPLAY "Note successfully added. You have submitted " + SIZE(entered_notes) + " unique notes."
+    END IF
+
+  END LOOP
+
+  DISPLAY "You have reached the maximum number of notes for this thread."
+
+END FUNCTION

@@ -1,0 +1,12 @@
+FUNCTION classify_engagement(number_of_notes)
+
+  // Use if conditions to classify the user
+  IF number_of_notes >= 3
+    RETURN "Active Learner"
+  ELSE IF number_of_notes >= 1 // This covers 1 and 2 notes
+    RETURN "Passive Learner"
+  ELSE // This covers 0 notes
+    RETURN "Needs Encouragement"
+  END IF
+
+END FUNCTION

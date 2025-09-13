@@ -1,0 +1,28 @@
+FUNCTION collect_user_questions
+
+  // Data structure to store unique questions
+  SET unique_questions = NEW SET
+
+  // Loop until 3 unique questions are collected
+  WHILE SIZE(unique_questions) < 3
+
+    // Prompt user for a question
+    DISPLAY "Please ask a question to continue. You have asked " + SIZE(unique_questions) + " out of 3 questions."
+    STRING user_question = GET_USER_INPUT
+
+    // Check if the question is new
+    IF user_question IS NOT IN unique_questions
+      ADD user_question TO unique_questions
+      DISPLAY "Thank you for your question."
+    ELSE
+      DISPLAY "You have already asked that question. Please provide a new one."
+    END IF
+
+  END WHILE
+
+  // Condition to check if the requirement is met
+  IF SIZE(unique_questions) >= 3
+    RETURN "Proceed to next module"
+  END IF
+
+END FUNCTION

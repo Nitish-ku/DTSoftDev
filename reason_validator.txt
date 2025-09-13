@@ -1,0 +1,30 @@
+FUNCTION validate_student_reason
+
+  // Loop to give the student 3 chances
+  FOR attempt FROM 1 TO 3
+
+    // Prompt the student to enter their reason
+    STRING reason = GET_USER_INPUT("Please enter your reason:")
+
+    // 1. Check word count
+    INTEGER word_count = COUNT_WORDS(reason)
+
+    // 2. Check for keywords
+    BOOLEAN has_keyword = FALSE
+    IF "because" IN reason OR "so" IN reason OR "therefore" IN reason
+      has_keyword = TRUE
+    END IF
+
+    // Use if condition to validate both rules
+    IF word_count >= 5 AND has_keyword == TRUE
+      RETURN "Accepted"
+    ELSE
+      DISPLAY "Try again. Your reason must have at least 5 words and include 'because', 'so', or 'therefore'."
+    END IF
+
+  END LOOP
+
+  // If all attempts fail
+  RETURN "Maximum attempts reached. Please review the requirements."
+
+END FUNCTION

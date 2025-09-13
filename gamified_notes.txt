@@ -1,0 +1,15 @@
+FUNCTION calculate_note_points(number_of_notes)
+
+  // Check conditions based on the number of notes
+  IF number_of_notes >= 5
+    RETURN "10 points"
+  ELSE IF number_of_notes >= 2
+    RETURN "5 points"
+  ELSE IF number_of_notes == 0
+    RETURN "Reminder: Please add notes!"
+  ELSE
+    // Handles cases where notes are 1, or any other edge case not specified.
+    RETURN "0 points"
+  END IF
+
+END FUNCTION
